@@ -37,9 +37,9 @@ const Navbar = () => {
             <li>
               <NavLink to={"/listedbooks"}> Listed Books</NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to={"/pagestoread"}> Pages to Read</NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
 
@@ -56,9 +56,9 @@ const Navbar = () => {
           <li>
             <NavLink to={"/listedbooks"}> Listed Books</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to={"/pagestoread"}> Pages to Read</NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="navbar-end">

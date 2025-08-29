@@ -2,9 +2,10 @@ import { Navigate, useLoaderData, useNavigate, useParams } from "react-router";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import { addToStoredDB } from "../../Utility/addToDb";
+import { Slide, ToastContainer, toast } from "react-toastify";
 
 const BookDetails = () => {
-  // for receive data 
+  // for receive data
   const data = useLoaderData();
   const { id } = useParams();
   const bookId = parseInt(id);
@@ -12,9 +13,20 @@ const BookDetails = () => {
 
   const handlenavigate = useNavigate();
 
-  const handleMarkAsRead = id => {
-    addToStoredDB(id)
-  } 
+  const handleMarkAsRead = (id) => {
+    toast.success("Book Added To Read", {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
+    addToStoredDB(id);
+  };
 
   const {
     category,
@@ -101,12 +113,18 @@ const BookDetails = () => {
 
             {/* Buttons */}
             <div className="flex gap-3 mt-5">
-              <button onClick={()=> handleMarkAsRead(id)  } className="px-4 py-2 cursor-pointer rounded-lg border text-gray-700 hover:bg-gray-100">
+              <button
+                onClick={() => handleMarkAsRead(id)}
+                className="px-4 py-2 cursor-pointer rounded-lg border text-gray-700 hover:bg-gray-100"
+              >
                 Mark As Read
               </button>
               <button className="px-4 py-2 cursor-pointer rounded-lg bg-blue-500 text-white hover:bg-blue-600">
                 At To Wishlist
               </button>
+              <ToastContainer
+                
+              />
             </div>
           </div>
         </div>

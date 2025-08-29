@@ -78,7 +78,6 @@ const ListedBooks = () => {
         <TabPanel>
           {readList.map((books) => (
             <ReadList key={books.bookId} books={books}>
-              {" "}
             </ReadList>
           ))}
         </TabPanel>
