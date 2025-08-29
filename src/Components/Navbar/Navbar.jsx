@@ -3,10 +3,14 @@ import { NavLink } from "react-router";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 px-0">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost pl-0 border-none lg:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn hover:bg-none active:bg-none btn-ghost pl-0 border-none lg:hidden"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -25,24 +29,16 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-red-400 rounded-box z-100 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-slate-200 rounded-box z-100 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Item 1</a>
+              <NavLink to={"/"}> Home</NavLink>
             </li>
             <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
+              <NavLink to={"/listedbooks"}> Listed Books</NavLink>
             </li>
             <li>
-              <a>Item 3</a>
+              <NavLink to={"/pagestoread"}> Pages to Read</NavLink>
             </li>
           </ul>
         </div>

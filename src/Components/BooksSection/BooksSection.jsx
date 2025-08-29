@@ -1,8 +1,8 @@
 import { CiStar } from "react-icons/ci";
 import { Link } from "react-router";
+import { FaAngleRight } from "react-icons/fa";
 
 const BooksSection = ({ singlebooks }) => {
-
   const {
     category,
     rating,
@@ -21,14 +21,6 @@ const BooksSection = ({ singlebooks }) => {
         <img src={image} alt="Book Cover" className="h-40 object-cover" />
       </div>
 
-      <div className="flex gap-2 mt-4">
-        {tags.map((tag, index) => (
-          <span key={index} className="bg-green-100  text-green-600 text-sm px-3 py-1 rounded-full">
-            {tag}
-          </span>
-        ))}
-      </div>
-
       <div>
         <h2 className="mt-3 text-lg font-semibold">{bookName}</h2>
         <p className="text-gray-500 ">By : {author}</p>
@@ -44,7 +36,12 @@ const BooksSection = ({ singlebooks }) => {
 
       <div className="my-2">
         <Link to={`/bookdetails/${bookId}`}>
-         <button className="w-full cursor-pointer bg-gray-200 py-2 font-bold  px-4 rounded-md">View Details</button>
+          <button className="w-full cursor-pointer border shadow-sm border-gray-200 py-2 font-bold px-4 rounded-md flex items-center justify-center group">
+            View Details
+            <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">
+              <FaAngleRight />
+            </span>
+          </button>
         </Link>
       </div>
     </div>

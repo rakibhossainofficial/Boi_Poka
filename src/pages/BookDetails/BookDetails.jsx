@@ -1,14 +1,20 @@
 import { Navigate, useLoaderData, useNavigate, useParams } from "react-router";
-import { IoCaretBackSharp } from "react-icons/io5";
+import { FaAngleLeft } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
+import { addToStoredDB } from "../../Utility/addToDb";
 
 const BookDetails = () => {
+  // for receive data 
+  const data = useLoaderData();
   const { id } = useParams();
   const bookId = parseInt(id);
-  const data = useLoaderData();
   const singleBook = data.find((book) => book.bookId === bookId);
 
   const handlenavigate = useNavigate();
+
+  const handleMarkAsRead = id => {
+    addToStoredDB(id)
+  } 
 
   const {
     category,
@@ -29,11 +35,11 @@ const BookDetails = () => {
         {/* back button  */}
         <button
           onClick={() => handlenavigate(-1)}
-          className="flex items-center px-3 py-1 border border-gray-300 rounded-md m-2 cursor-pointer"
+          className="flex items-center px-3 py-1 border border-gray-300 rounded-md m-2 cursor-pointer group"
         >
-          <span>
-            <IoCaretBackSharp />
-          </span>{" "}
+          <span className="ml-2 transform transition-transform duration-300 group-hover:-translate-x-1">
+            <FaAngleLeft />
+          </span>
           Back
         </button>
 
@@ -81,20 +87,25 @@ const BookDetails = () => {
                 Publisher: <span className="font-bold">{publisher}</span>
               </p>
               <p>
-                Year of Publishing: <span className="font-bold">{yearOfPublishing}</span>
+                Year of Publishing:{" "}
+                <span className="font-bold">{yearOfPublishing}</span>
               </p>
               <p className="flex items-center gap-1">
-                Rating: <span className="font-bold flex items-center">{rating}<FaRegStar /> </span>
+                Rating:{" "}
+                <span className="font-bold flex items-center">
+                  {rating}
+                  <FaRegStar />{" "}
+                </span>
               </p>
             </div>
 
             {/* Buttons */}
             <div className="flex gap-3 mt-5">
-              <button className="px-4 py-2 rounded-lg border text-gray-700 hover:bg-gray-100">
-                Read
+              <button onClick={()=> handleMarkAsRead(id)  } className="px-4 py-2 cursor-pointer rounded-lg border text-gray-700 hover:bg-gray-100">
+                Mark As Read
               </button>
-              <button className="px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600">
-                Wishlist
+              <button className="px-4 py-2 cursor-pointer rounded-lg bg-blue-500 text-white hover:bg-blue-600">
+                At To Wishlist
               </button>
             </div>
           </div>
