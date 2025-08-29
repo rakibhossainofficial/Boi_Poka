@@ -14,7 +14,7 @@ const addToStoredDB = (id) => {
     const storedBookData = getStoredBook();
 
     if(storedBookData.includes(id)){
-        alert("This Id Already Exist")
+        alert("This Book Is Already Exist")
     }
     else{
         storedBookData.push(id);
